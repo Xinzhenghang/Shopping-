@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+body {font-family: Arial, Helvetica, sans-serif;}
+* {box-sizing: border-box;}
+
+input[type=text], select, textarea {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  margin-top: 6px;
+  margin-bottom: 16px;
+  resize: vertical;
+}
+
+input[type=submit] {
+  background-color: #04AA6D;
+  color: white;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+input[type=submit]:hover {
+  background-color: #45a049;
+}
+
+.container {
+  border-radius: 5px;
+  background-color: #f2f2f2;
+  padding: 20px;
+}
+</style>
+</head>
+<body>
+
+
+<form action="/action_page.php">
+  <div class="container">
+    <h1>Register</h1>
+    <p>Please fill in this form to create a deal account.</p>
+    <hr>
+
+    <label for="Deal name"><b>Deal name:</b></label>
+    <input type="text" placeholder="Enter Deal name" name="Deal name" id="Deal name" required>
+
+  <label for="Deal/Company Logo image(120x120px):"><b>Deal/Company Logo image(120x120px):</b></label>
+      <form action="/action_page.php">
+  <input type="file" id="myFile" name="filename">
+</form><br>
+<?php
+echo'<br>'; ?>
+
+    <label for="Company"><b>Company:</b></label>
+    <input type="Company" placeholder="Enter Company" name="Company" id="Company" required>
+
+    <label for="company address"><b>company address:</b></label>
+    <input type="company address" placeholder="company address" name="company address" id="company address" required>
+
+    <label for="company postcode"><b>company postcode:</b></label>
+    <input type="company postcode" placeholder="company postcode" name="company postcode" id="company postcode" required>
+
+    <label for="company country"><b>company country:</b></label>
+    <input type="company country" placeholder="company country" name="company country" id="company country" required>
+
+    <label for="promo code"><b>promo code:</b></label>
+    <input type="promo code" placeholder="promo code" name="promo code" id="promo code" required><br>
+    <?php
+    echo'<br>'; ?>
+
+    <label for="landing page"><b>landing page:</b></label>
+    <form action="/action_page.php">
+<input type="file" id="myFile" name="filename">
+</form>
+
+    <label for="catchy tag line"><b>catchy tag line:</b></label>
+    <input type="catchy tag line" placeholder="catchy tag line" name="catchy tag line" id="catchy tag line" required><br>
+    <?php
+    echo'<br>'; ?>
+
+     <label for="deal description"><b>deal description:</b></label>
+     <textarea id="deal description" name="deal description" placeholder="Write something.." style="height:200px"></textarea><br>
+     <?php
+     echo'<br>'; ?>
+
+    <label for="reward amount"><b>reward amount:</b></label>
+    <input type="reward amount" placeholder="reward amount" name="reward amount" id="reward amount" required>
+
+    <label for="reward unit"><b>reward unit(RM,percentage,promo code):</b></label>
+    <input type="reward unit" placeholder="reward unit" name="reward unit" id="reward unit" required><br>
+    <?php
+    echo'<br>'; ?>
+    <label for="country"><b>Country:</b></label>
+     <select id="country" name="country">
+       <option value="China">China</option>
+       <option value="Malyasia">Malaysia</option>
+       <option value="usa">USA</option>
+     </select>
+
+     <label for="validity period"><b>validity period:</b></label>
+     <input type="validity period" placeholder="validity period" name="validity period" id="validity period" required><br>
+     <?php
+     echo'<br>'; ?>
+    <button type="submit" class="registerbtn"><b>Register</b></button>
+  </div>
+
+  <div class="container signin">
+    <p>Already have an account? <a href="#">Sign in</a>.</p>
+  </div>
+</form>
+
+</body>
+</html>
