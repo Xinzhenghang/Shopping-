@@ -1,0 +1,199 @@
+
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <script type="text/javascript" src="http://static.takungpao.com/js/jquery.1.9.min.js"></script>
+  <title>Xu Yuanfeng</title>
+  <style>
+	  body {
+	    background-image: url("bgimg.jpg");
+		font-size: 27px;
+	  }
+	  form{
+		
+		margin-left: 700px;
+		width: 700px;
+		height: 700px;
+		font-weight: bold;
+		color: white;
+		
+	  }
+	 #i222{
+		 margin-left: 100px;
+		  }
+	#sbt{
+		margin-left: 100px;
+	}
+	#i222,#sbt{
+		width: 80px;
+		height: 40px;
+		line-height: 40px;
+		margin-top: 30px;
+		text-align: center;
+		display: inline-block;
+		font-weight: bold;
+		color: red;
+		font-size: 20px;
+		border-radius: 5px;
+		
+	  }
+	#a{
+		text-align: center;
+		padding-bottom: 20px;
+		padding-top: 30px;
+		
+	} 
+	#user,#text4,#psd1,#psd2{
+		width: 260px;
+		border-width: medium;
+		height: 25px;
+		
+	}
+	
+	.yqm{
+		font-size: 18px;
+		
+	}
+#ic{
+	width: 260px;
+	border-width: medium;
+	height: 25px;
+}
+.long{
+     margin-left: 220px; 
+    }
+input[type=radio]{
+	margin-left: 10px;
+}
+  </style>
+ </head>
+ <script>     
+function uuid() {
+    var s = [];
+    var hexDigits = "0123456789abcdefghijklmnopq";
+    for (var i = 0; i < 6; i++) {
+        s[i] = hexDigits.substr(Math.floor(Math.random() * 0x10), 1);
+    }   
+   var uuid = s.join("");
+    document.getElementById("ic").value=uuid;
+    
+    
+}
+</script>
+ <body>
+	 
+    <form action="" method="post" ">
+	   <div id="a">Registration Information</div>
+        <p>UserName :
+			<input style="margin-left:56px;" id="user" name="username" type="text" placeholder="User Name"/>
+		</p>
+		<div style="float: left;">Gender:</div>
+		<div class="long">
+			Man:<input type="radio" name="gender" value="1">
+			Female: <input type="radio" name="gender" value="2">
+		</div><br/>
+		<div class="kong">UserEmail  :
+			<input style="margin-left: 63px;" id="text4" type="text" name="01" onblur="checkEmail()">
+		<p>Countries  :
+			<input style="margin-left:67px;" id="user" name="country" type="text" placeholder="country"/></p>
+        <p>Phone No:
+			<input style="margin-left:70px;" id="psd1" name="telphone" type="text" placeholder="phone no" /></p>
+		<p>Address :
+			<input style="margin-left:87px;" id="user" name="address" type="text" placeholder="address" style="margin-left: "/></p>
+        <p>Postal Code:
+			<input style="margin-left:45px;" id="psd1" name="postal_code" type="text" placeholder="postal code"/></p>
+        <p>Passwort :
+			<input style="margin-left:74px;" id="psd1" name="password" type="password" placeholder="passwort"/></p>
+        <p>Repassword:
+			<input style="margin-left:40px;" id="psd2" name="repassword" type="password" placeholder="Confirm password"/></p>
+		<p>Referral Code：
+			<input id="ic" type="text" name="code"/>
+			<input id="yqmYqm" class="yqm" type="button" value="click" onclick="uuid()"/>   
+		</p>
+		<p>
+			<input id="sbt" name="sbt" type="submit" placeholder="submit" value="Submit"/>
+			<a href="#"><input id="i222" type="button" name="004" value="Cancel" ></a>
+		</p>
+	</form> 
+		 
+		<script type="text/javascript">
+		    //取消
+		    
+			function checkEmail(){ 
+				var div = document.getElementById("div4"); 
+				div.innerHTML = ""; 
+				var email = document.tijiao.text5.value; 
+				var sw = email.indexOf("@", 0); 
+				var sw1 = email.indexOf(".", 0); 
+				var tt = sw1 - sw; 
+				if (email.length == 0) { 
+				div.innerHTML = "Mailbox cannot be empty"; 
+				document.tijiao.text5.focus(); 
+				return false; 
+			} 
+			
+		   
+			
+		</script>
+ </body>
+</html>
+<?php
+if(isset($_POST["sbt"])){
+        $username = $_POST['username'];
+        $password = $_POST['password'];
+        $repassword = $_POST['repassword'];
+        $telphone = $_POST['telphone'];
+		$pro = $_POST['code'];
+		
+	echo $pro;
+		 if(!preg_match('/^[\w\x80-\xff]{3,15}$/', $username)){
+		    exit('Error: the user name does not meet the requirements。history.go(-1);');
+		 }
+		 if(strlen($password) < 6){
+		     exit('Error: the password length does not meet the requirements。history.go(-1);');
+		}
+        if ($username == ''){
+            echo '<script>alert("enter one user name！");history.go(-1);</script>';
+            exit(0);
+        }
+        if ($password == ''){
+            echo '<script>alert("Please input a password");history.go(-1);</script>';
+            exit(0);
+        }
+        if ($password != $repassword){
+            echo '<script>alert("The password and confirmation password should be consistent");history.go(-1);</script>';
+            exit(0);
+        }
+        if($password == $repassword){
+				$conn = new mysqli('localhost','root','','pdoposts');
+				if ($conn->connect_error){
+					echo 'Database connection failed！';
+					exit(0);
+				}else {
+					$sql = "select username from users where username = '$_POST[username]'";
+					$result = $conn->query($sql);
+					$number = mysqli_num_rows($result);
+					if ($number) {
+						echo '<script>alert("User name already exists");history.go(-1);</script>';
+				
+					} else {
+						$sql_insert = "insert into users (username,password,refereal_code) values('$username','$password','$pro')";
+						$res_insert = $conn->query($sql_insert);
+						if ($res_insert) {
+						echo "<script type='text/javascript'>window.top.location='http://localhost:4433/PhpProject3/SSE_login.php';</script>"; exit;
+							
+						} else {
+							echo "<script>alert('The system is busy. Please wait！');</script>";
+						}
+					}
+				}
+			
+		}else{
+            echo "<script>alert('Failed to submit！'); history.go(-1);</script>";
+        }
+}	
+?>
