@@ -1,0 +1,578 @@
+<!DOCTYPE html>
+<?php
+require 'google-api/vendor/autoload.php';
+
+// Creating new google client instance
+$client = new Google_Client();
+
+// Enter your Client ID
+$client->setClientId('950915042157-eo1c06b85ulkrvntc4grho5f8eaiojec.apps.googleusercontent.com');
+// Enter your Client Secrect
+$client->setClientSecret('GPFqmHBcHmes4H5OkN3QF0oi');
+// Enter the Redirect URL
+$client->setRedirectUri('http://localhost:4433/PhpProject3/SSE_register_cargo.php');
+
+// Adding those scopes which we want to get (email & profile Information)
+$client->addScope("email");
+$client->addScope("profile");
+
+
+if(isset($_GET['code'])):
+
+    $token = $client->fetchAccessTokenWithAuthCode($_GET['code']);
+    $client->setAccessToken($token['access_token']);
+
+    // getting profile information
+    $google_oauth = new Google_Service_Oauth2($client);
+    $google_account_info = $google_oauth->userinfo->get();
+
+    // showing profile info
+    echo "<pre>";
+    var_dump($google_account_info);
+
+else: 
+    // Google Login Url = $client->createAuthUrl(); 
+
+?>
+<?php endif; ?>
+
+
+<html>
+<head>
+   <meta charset="utf-8"> 
+   <title>Xin ZhengHang</title>
+   <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">  
+   <script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+   <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+   <script src="https://cdn.jsdelivr.net/npm/@authing/sso/dist/AuthingSSO.umd.min.js"></script>  
+     <script type="text/javascript" src="http://lib.sinaapp.com/js/jquery/1.7.2/jquery.min.js"></script>
+   <meta name="google-signin-scope" content="profile email">
+    <meta name="google-signin-client_id" content="950915042157-eo1c06b85ulkrvntc4grho5f8eaiojec.apps.googleusercontent.com">
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
+<script src="https://apis.google.com/js/client:platform.js?onload=startApp"></script>
+
+</head>
+ 
+  
+       
+    
+
+<style>
+    .h1{
+        text-align: center;
+    
+       
+        
+       line-height: 1.5;
+    color: #000000;
+    }
+   .div{
+    -webkit-text-size-adjust: 100%;
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
+       
+    font-family: Sans-serif;
+     font-size: 8px;
+     
+    line-height: 1.5;
+    color: #000000;
+    box-sizing: border-box;
+    width: 400px;
+    height: 530px;
+    padding: 50px;
+    border-style:solid;
+  
+      margin-left: 777px;
+      margin-right: 660px;
+      margin-top: 80px;
+      
+      background-color:	#F5FFFA;
+   }
+   
+  input[type=email] {
+  width: 290px;
+  height:62px;
+  margin: 20px 0;
+    border: 1px solid #ccc;
+  border-color:black;
+
+  box-sizing: border-box;
+  
+  display:inline-block;
+  font-size: 12px;
+  color:#140600;
+  font-family: SF Pro Display,Roboto,Noto,Arial,PingFang SC,Hiragino Sans GB,Microsoft YaHei,sans-serif;
+  border-radius: 15px;
+
+}
+input[type=password]{
+  width: 290px;
+  height:62px;
+  margin: 20px 0;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+  border-color:black;
+  display:inline-block;
+  font-size: 12px;
+  color:#140600;
+  font-family: SF Pro Display,Roboto,Noto,Arial,PingFang SC,Hiragino Sans GB,Microsoft YaHei,sans-serif;
+  border-radius: 15px;
+ 
+}
+input[type=text]{
+  width: 290px;
+  height:22px;
+  margin: 5px 0;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+  border-color:black;
+  display:inline-block;
+  font-size: 12px;
+  color:#140600;
+  font-family: SF Pro Display,Roboto,Noto,Arial,PingFang SC,Hiragino Sans GB,Microsoft YaHei,sans-serif;
+
+ 
+}
+.button {
+  display: inline-block;
+  padding: 2px 15px ;
+  font-size: 13px;
+  cursor: pointer;
+  text-align: center;   
+  text-decoration: none;
+  outline: none;
+  color: #fff;
+  background-color: #00e6b9;
+  border: none;
+  border-radius: 15px;
+  box-shadow: 0 9px #999; 
+}
+
+.button:hover {background-color: #3e8e41}
+
+.button:active {
+  background-color: #3e8e41;
+  box-shadow: 0 5px #666;
+  transform: translateY(4px);
+}
+.button1 {
+ display: inline-block;
+  padding: 2px 15px ;
+  font-size: 13px;
+  cursor: pointer;
+  text-align: center;   
+  text-decoration: none;
+  outline: none;
+  color: #fff;
+  background-color: #00e6b9;
+  border: none;
+  border-radius: 15px;
+  box-shadow: 0 9px #999;
+   margin: 15px 2px 10px 146px;
+ 
+}
+.social-main-title {
+    height: 20px;
+    width: 100%;
+    float: left;
+    position: relative;
+    text-align: center;
+}
+
+.button1:hover {
+    
+    background-color: #3e8e41;
+}
+
+.button1:active {
+  background-color: #3e8e41;
+  box-shadow: 0 5px #666;
+  transform: translateY(4px);
+}
+
+a{
+    
+  padding: 3px 19px;  
+    
+}
+body{
+    
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-size: 14px;
+    color: #333;
+
+ background-image:url('bgimg.jpg');
+}
+   ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #333;
+}
+
+.share{
+ 
+margin:-8px 20px 3px 1500px;
+
+font-family: Microsoft Yahei;
+
+font-size:23px;
+
+
+}
+.share1{
+    
+    margin:-20px 20px 3px -1400px;
+    
+    font-family: Microsoft Yahei;
+
+    font-size:23px;
+}
+
+.main{
+    
+     font-family: Microsoft Yahei;
+     
+     
+      font-size:24px;
+  
+      
+      margin-left: 400px;
+      
+     padding-top: -140px;
+     
+     
+}
+ .div2{
+    -webkit-text-size-adjust: 100%;
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
+       
+    font-family: Sans-serif;
+     font-size: 24px;
+     
+   
+    box-sizing: border-box;
+    width: 40px;
+    height: 50px;
+    padding: 30px;
+
+   
+   }
+   .div3{
+       
+     -webkit-text-size-adjust: 100%;
+     
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
+       
+    font-family: Sans-serif;
+     font-size: 24px;
+     
+    line-height: 1.5;
+    color: #000000;
+    box-sizing: border-box;
+    width: 400px;
+    height: 100px;
+    padding: 10px;
+   
+      border-style:solid; 
+  
+      margin-left:70px;
+      
+      background-color:#ffffff;
+   }
+   .div4{
+     
+     -webkit-text-size-adjust: 100%;
+     
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
+       
+    font-family: Sans-serif;
+     font-size: 24px;
+     
+    line-height: 1.5;
+    color: #000000;
+    box-sizing: border-box;
+   width:200px;
+    height: 100px;
+    padding: 30px;
+   
+    border-style:solid; 
+     
+     text-align: right;
+       
+   }
+   
+    .google{
+        
+        margin-left: 300px;
+    
+    
+   }  
+</style>
+ <script>     
+
+
+    </script>
+   
+     <script type="text/javascript">
+            function test()
+  {
+  alert("Correctly!");
+  }
+           
+        </script>
+         <script type="text/javascript">
+            function test1()
+  {
+  alert("Username or Password needed");
+  }
+           
+        </script>
+          <script type="text/javascript">
+            function test2()
+  {
+  alert("Password does not match");
+  }
+           
+        </script>
+                  <script type="text/javascript">
+            function test3()
+  {
+  alert("Username  does not find");
+  }
+           
+        </script>
+        
+                      <script type="text/javascript">
+            function test4()
+  {
+  alert("Thank you, We have found your refereal code");
+  }
+           
+        </script>
+        
+                      <script type="text/javascript">
+            function test5()
+  {
+  alert("Sorry,we can not find your refereal code");
+  }
+           
+        </script>
+        
+                       <script type="text/javascript">
+            function test6()
+  {
+  alert("Please read carefully the rules and select!");
+  }
+           
+        </script>     
+    
+
+    <script>
+      function onSignIn(googleUser) {
+        // Useful data for your client-side scripts:
+        var profile = googleUser.getBasicProfile();
+        console.log("ID: " + profile.getId()); // Don't send this directly to your server!
+        console.log('Full Name: ' + profile.getName());
+        console.log('Given Name: ' + profile.getGivenName());
+        console.log('Family Name: ' + profile.getFamilyName());
+        console.log("Image URL: " + profile.getImageUrl());
+        console.log("Email: " + profile.getEmail());
+
+        // The ID token you need to pass to your backend:
+        var id_token = googleUser.getAuthResponse().id_token;
+        console.log("ID Token: " + id_token);
+        
+        googleUser.getBasicProfile().getGivenName();
+        
+        
+        document.querySelector('#content').innerText=googleUser.getBasicProfile().getName();
+        
+       var name=googleUser.getBasicProfile().getName();
+       
+    
+      }
+
+       
+     
+    </script>
+         
+<body> 
+    <div class=h1>Welcome To Trade Center</h1><!-- comment -->
+   
+    <div class="share1">
+        
+        
+        <a href="https://web.whatsapp.com/" target="_blank"><img src="aliyun.png"width="129px";height=27px></a> |
+            
+        <dic class="div2">Trade Center</div>
+    </div>
+    <div class="share">
+   
+    <div class="div3">
+        <p> Sharing By:</P>
+        <a href="https://www.facebook.com/sharer/sharer.php?u=http://localhost/Demo/lab.php" target="_blank"><img src="facebook.jpg"width="26px"height="26px"></a>
+         
+            <a href="https://twitter.com/intent/tweet?url=http://localhost/Demo/lab.php&text=" target="_blank"><img src="twitter.png"width="32px"height="24px"></a>
+            
+            <a href="mailto:info@example.com?&subject=&cc=&bcc=&body=http://localhost/Demo/lab.php%0A" target="_blank"><img src="email.jpg"width="26"height="26"></a>
+            
+            <a href="https://www.linkedin.com/shareArticle?mini=true&url=http://localhost/Demo/lab.php" target="_blank"><img src="linked.jpg"width="26"height="26"></a>
+            
+          
+            <a href="https://pinterest.com/pin/create/button/?url=http://localhost/Demo/lab.php&media=&description=" target="_blank"><img src="Pinterest.jpg"width="25px"height="25px"></a>
+            
+           
+       </div>
+</div>
+    </div>
+    
+        <div class="div"> 
+            <form method="post" action="" >
+                
+                  <input type="email" name="text"placeholder="Email"></br>
+                  
+                 <input type="password" name="passward"placeholder="Password"></br>
+    
+                   <input type="text" name="code" placeholder="referral code"></br>
+                   
+                  <button class="button"type="submit"name="reg" button id="a"value="register">Register</button>
+                              <?php
+  $conn= mysqli_connect('localhost','root','','pdoposts');
+  
+$sql1 = "SELECT COUNT(`Temp`)AS total FROM `record_false`";
+
+$RET= mysqli_query($conn,$sql1);
+
+   $re = mysqli_fetch_object($RET);
+   
+   if($re->total>2){
+       
+     echo "<p style='color:red;font-size:13px;margin: -10px 2px 20px 156px'>Contact Administrator !</p>";
+       
+   }else{
+      
+    ?>   
+                  <button class="button1"type="other"name="log" id="b"value="login">Login  </button>
+<?php }?>
+              
+                  <h5> Are you agree the<a  href="http://www.cffex.com.cn/u/cms/www/202003/27155912c7m4.pdf"> Deal Rules</a><input type="radio" id="huey" name="drone"tag="0"value="radio"></h5>   
+                  
+                  <script>        
+                $(":radio").click(function () {
+                var r = $(this).attr("name");
+                $(":radio[name=" + r + "]:not(:checked)").attr("tag", 0);
+                if ($(this).attr("tag") == 1) {
+                    $(this).attr("checked", false);
+                    $(this).attr("tag", 0);
+                }
+                else {
+                    $(this).attr("tag",1);
+                }
+            });      
+                      </script>
+            </form>          
+            <h3>You can also use below medias login!</h3>
+            <p>-----------------------------------------------------------------------------------------------------------</P></br>
+        
+            <a class="login-btn" href="<?php echo $client->createAuthUrl(); ?>"> <img src="google.png"width="26"height="26"></a>
+             
+            
+        </div>
+    <?php
+if(isset($_POST["drone"])&&$_POST["drone"]=="radio"){
+    
+   if(isset($_POST["log"]) && $_POST["log"]=="login"){
+      
+        $temp=1;
+       $name=$_POST["text"];
+       
+       $pass=$_POST["passward"];
+       
+        $string=$_POST["code"];
+       
+       $conn= mysqli_connect('localhost','root','','pdoposts');
+       
+       if($name==null||$pass==null){
+           
+             echo "<script type='text/javascript'>test1();</script>"; 
+           
+       }
+       
+    try{
+       $result= mysqli_query($conn, "SELECT * FROM users WHERE username='$name'");
+      
+       if(mysqli_num_rows($result)>0){
+         
+           
+           $row= mysqli_fetch_object($result);
+           
+           if($pass==$row ->password){
+             
+               
+            $sql="DELETE FROM record_false";
+            
+             $conn->query($sql);
+               
+                echo "<script type='text/javascript'>test();</script>"; 
+                 
+                 echo "<script type='text/javascript'>uuid();</script>"; 
+                 
+                  
+                     $sql3=  "SELECT * FROM users WHERE refereal_code='$string'";
+               
+                     $result3 =  $conn->query($sql3);
+                         
+         
+                        if(mysqli_num_rows($result3)>0){
+         
+                       echo "<script type='text/javascript'>test4();</script>";
+           
+                        }else{
+                         
+                           echo "<script type='text/javascript'>test5();</script>";
+                        }
+                        
+                        
+                        
+                        //加入邀请码的赋值情况
+                   
+             echo "<script type='text/javascript'>window.top.location='http://localhost/Demo/lab1.php';</script>"; exit;
+               
+       }else{
+            
+                 $sql="INSERT INTO record_false(Temp) VALUES('$temp')";
+           
+                $conn->query($sql);
+                  echo "<script type='text/javascript'>test2();</script>";
+                  
+           }
+           
+       } else{
+           
+            $sql="INSERT INTO record_false(Temp) VALUES('$temp')";
+           
+            $conn->query($sql);
+            
+             echo "<script type='text/javascript'>test3();</script>";
+        
+       }
+       
+       }catch(PDOException $e){
+           
+           echo "<p style='color:red;font-size:12px;'>Can not connect the server</p>";
+       }
+   }    
+    if(isset($_POST["reg"]) && $_POST["reg"]=="register"){
+        
+        
+        
+         echo "<script type='text/javascript'>window.top.location='http://localhost:4433/PhpProject3/SSE_register1.php';</script>"; exit;
+        
+    }
+}else{
+    
+     echo "<script type='text/javascript'>test6();</script>";
+    
+}
+?>
