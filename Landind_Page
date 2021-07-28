@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html>
+<head>
+   <meta charset="utf-8"> 
+   <title>Xin ZhengHang</title>
+   <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">  
+   <script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+   <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+   <script src="https://cdn.jsdelivr.net/npm/@authing/sso/dist/AuthingSSO.umd.min.js"></script>  
+</head>
+ <?php
+
+ session_start();
+ ?>
+<style>
+    .h1{
+        text-align: center;
+    
+        font-size:40px;
+       line-height: 1.5;
+       color: #FFFFFF;
+    }
+      .h2{
+        text-align: center;
+    
+       line-height: 1.5;
+        color: #FFFFFF;
+    
+        font-size:29px;
+    }
+   .div{
+    -webkit-text-size-adjust: 100%;
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
+       
+    font-family: Sans-serif;
+     font-size: 8px;
+     
+    line-height: 1.5;
+    color: #000000;
+    box-sizing: border-box;
+    width: 400px;
+    height: 500px;
+    padding: 50px;
+    border-style:solid;
+  
+      margin-left: 777px;
+      margin-right: 660px;
+      margin-top: 80px;
+      
+      background-color:	#F5FFFA;
+   }
+   
+
+
+a{
+    
+  padding: 1px 10px;  
+    
+}
+body{
+    
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-size: 14px;
+    color: #333;
+
+ background-image:url('bjd.jpg');
+}
+   ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #333;
+}
+
+.share{
+ 
+margin:-68px 20px 3px 1500px;
+
+font-family: Microsoft Yahei;
+
+font-size:23px;
+
+
+}
+.share1{
+    
+    margin:-20px 20px 3px -1400px;
+    
+    font-family: Microsoft Yahei;
+
+    font-size:23px;
+}
+
+.main{
+    
+     font-family: Microsoft Yahei;
+     
+     
+      font-size:24px;
+  
+      
+      margin-left: 400px;
+      
+     padding-top: -140px;
+     
+     
+}
+ .div2{
+    -webkit-text-size-adjust: 100%;
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
+       
+    font-family: Sans-serif;
+     font-size: 24px;
+     
+   
+    box-sizing: border-box;
+    width: 40px;
+    height: 50px;
+    padding: 30px;
+
+   
+   }
+   .div3{
+       
+     -webkit-text-size-adjust: 100%;
+     
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
+       
+    font-family: Sans-serif;
+     font-size: 24px;
+     
+    line-height: 1.5;
+    color: #000000;
+    box-sizing: border-box;
+    width: 550px;
+    height: 100px;
+    padding: 10px;
+   
+      border-style:solid; 
+  
+     
+      
+      background-color:#000000;
+      
+      margin-left:-100px;
+   }
+   .div4{
+     
+     -webkit-text-size-adjust: 100%;
+     
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
+       
+    font-family: Sans-serif;
+     font-size: 24px;
+     
+    line-height: 1.5;
+    color: #000000;
+    box-sizing: border-box;
+   width:200px;
+    height: 100px;
+    padding: 30px;
+   
+    border-style:solid; 
+     
+     text-align: right;
+       
+   }
+   
+   .div5{
+       
+    
+      
+     padding-top: -140px;
+     
+       margin-top:50px;
+   }
+   
+  input[type=text]{
+  width: 290px;
+  height:22px;
+  margin: 5px 0;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+  border-color:black;
+  display:inline-block;
+  font-size: 12px;
+  color:#140600;
+  font-family: SF Pro Display,Roboto,Noto,Arial,PingFang SC,Hiragino Sans GB,Microsoft YaHei,sans-serif;
+
+ 
+}
+ input[type=text]{
+  width: 290px;
+  height:32px;
+  margin: 5px 0;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+  border-color:black;
+  display:inline-block;
+  font-size: 12px;
+  color:#140600;
+  font-family: SF Pro Display,Roboto,Noto,Arial,PingFang SC,Hiragino Sans GB,Microsoft YaHei,sans-serif;
+
+  font-size:20px;
+ 
+}  
+.search-button{
+    
+    
+  outline: none;
+  color: #fff;
+  background-color: #ff8c00;
+  border: none;
+  border-radius: 15px;
+  
+  font-size:20px;
+}
+.search-button:hover {
+    
+    background-color: #3e8e41;
+}
+
+.search-button:active {
+  background-color: #3e8e41;
+  box-shadow: 0 5px #666;
+  transform: translateY(4px);
+}
+
+</style>
+   
+
+<body> 
+    <div class=h1>Welcome to Trade Center</h1><!-- comment -->
+    
+    <div class=h2>Deal with Anyone !</h2>
+    
+    <div class="share1">
+        
+        
+        <a href="https://web.whatsapp.com/" target="_blank"><img src="aliyun.png"width="129px";height=27px></a> |
+            
+         <divb class="div2">Best Trade Company</div>
+           <form method="post" action="" >
+               
+         <input type="text" name="code" placeholder="Search Deals">
+         
+          <button class="search-button"type="submit"name="reg" button id="a"value="login">Search</button>
+          
+          <form>
+    </div>
+    <div class="share">
+        
+   
+    <div class="div3">
+      
+        <a href="http://localhost:4433/PhpProject3/SSE_login.php" target="_blank">Login</a>
+         
+            <a href="http://localhost:4433/PhpProject3/SSE_register1.php" target="_blank">Register_User</a>
+            
+            <a href="http://localhost:4433/PhpProject3/SSE_register_cargo.php" target="_blank">Register_Deal </a>
+            
+            <a href="http://localhost:4433/PhpProject3/SSE_check.php" target="_blank">View</a>
+       </div>
+</div>
+    </div>
+    
+              <div class="div5">
+                   <div id="butong_net_right" style="overflow:hidden;width:2000px;">
+<table  border="0">
+<tr><td id="butong_net_right1"  align="center" >
+<table cellpadding="2"  border="0">
+<tr align="center">
+   
+    <td><a href="https://www.audi.cn/cn/web/zh/models/e-tron/e-tron.html?csref=sea:baidu:bc:baidu_sem_20200923:a:baidu:baidu.com" target="_blank"><img src="cow.png"width="660px"height="400px"></a></td>
+    <td><a href="https://www.audi.cn/cn/web/zh/models/e-tron/e-tron.html?csref=sea:baidu:bc:baidu_sem_20200923:a:baidu:baidu.com" target="_blank"><img src="pig_meat.jfif"width="660px"height="400px"></a></td>
+    <td> <a href="https://www.audi.cn/cn/web/zh/models/e-tron/e-tron.html?csref=sea:baidu:bc:baidu_sem_20200923:a:baidu:baidu.com" target="_blank"><img src="download.jfif"width="660px"height="400px"></a></td>
+    <td><a href="https://www.bmw.com.cn/zh/index.html?mz_ca=2212932&mz_sp=7jnaj&mz_kw=32694439&mz_cm=1288?bd_vid=10301977508918485313" target="_blank"><img src="iron.jfif"width="660px"height="400px"></a></td>
+    <td><a href="https://www.bmw.com.cn/zh/index.html?mz_ca=2212932&mz_sp=7jnaj&mz_kw=32694439&mz_cm=1288?bd_vid=10301977508918485313" target="_blank"><img src="pig_meat.jfif"width="660px"height="400px"></a></td>
+    <td><a href="https://www.audi.cn/cn/web/zh/models/e-tron/e-tron.html?csref=sea:baidu:bc:baidu_sem_20200923:a:baidu:baidu.com" target="_blank"><img src="iron.jfif"width="660px"height="400px"></a></td><!-- comment -->
+    <td><a href="https://www.bmw.com.cn/zh/index.html?mz_ca=2212932&mz_sp=7jnaj&mz_kw=32694439&mz_cm=1288?bd_vid=10301977508918485313" target="_blank"><img src="cow.png"width="660px"height="400px"></a></td>
+  
+    <td><a href="https://www.audi.cn/cn/web/zh/models/e-tron/e-tron.html?csref=sea:baidu:bc:baidu_sem_20200923:a:baidu:baidu.com" target="_blank"><img src="car3.jpg"width="660px"height="400px"></a></td>
+</tr>
+</table>
+</td>
+<td id="butong_net_right2" valign="top"></td>
+</tr>
+</table>
+</div>
+              </div>
+<script>
+var speed=10;//速度数值越大速度越慢
+butong_net_right2.innerHTML=butong_net_right1.innerHTML;
+function Marquee4(){
+if(butong_net_right.scrollLeft<=0)
+butong_net_right.scrollLeft+=butong_net_right2.offsetWidth;
+else{
+butong_net_right.scrollLeft--
+}
+}
+var MyMar4=setInterval(Marquee4,speed)
+butong_net_right.onmouseover=function() {clearInterval(MyMar4)}
+butong_net_right.onmouseout=function() {MyMar4=setInterval(Marquee4,speed)}
+</script>
+  <script type="text/javascript">
+            function test()
+  {
+  alert("Sorry,Please Search Something \u{01F603}");
+  }
+  
+          function test1()
+  {
+  alert("Sorry,Please Enter the correct value!");
+  }       
+        </script>  
+ <?php
+
+
+   if(isset($_POST["reg"]) && $_POST["reg"]=="login"){
+        
+       $val=$_POST["code"];
+       
+        if($val==null){
+          
+             echo "<script type='text/javascript'>test()</script>";
+        }else{
+            
+            
+            try{
+        
+         $servername = "localhost";
+         
+         $username = "root";
+         
+         $password = "";
+         
+         $dbname = "pdoposts";
+         
+        $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
+        
+            $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+              
+              $sql = "SELECT *FROM trade WHERE Trade_No='$val' ";
+              
+              $sql1="SELECT *FROM trade WHERE Trade_Date='$val' ";
+              
+              $sql2="SELECT *FROM trade WHERE Item_Name='$val' ";
+              
+              $sql3="SELECT *FROM trade WHERE Trade_Price='$val' ";
+               
+              $sql4="SELECT *FROM trade WHERE Company_Name='$val' ";
+              
+              $sql5="SELECT *FROM trade WHERE Popularity='$val' ";
+              
+              $sql6="SELECT *FROM trade WHERE Post_Code='$val' ";
+              
+              $sql7="SELECT *FROM trade WHERE Trade_Country='$val' ";
+              
+              $res = $conn->query($sql);
+              
+              $res1 = $conn->query($sql1);
+              
+              $res2 = $conn->query($sql2);
+              
+              $res3 = $conn->query($sql3);
+              
+              $res4 = $conn->query($sql4);
+              
+              $res5 = $conn->query($sql5);
+              
+              $res6 = $conn->query($sql6);
+              
+              $res7 = $conn->query($sql7);
+                
+                if($res->fetchColumn() > 0||$res1->fetchColumn() > 0||$res2->fetchColumn() > 0||$res3->fetchColumn() > 0||$res4->fetchColumn() > 0||$res5->fetchColumn() > 0||$res6->fetchColumn() > 0||$res7->fetchColumn() > 0){
+                    
+                    $_SESSION['val']=$val;
+                    
+                      echo "<script type='text/javascript'>window.top.location='http://localhost:4433/PhpProject3/SSE_check.php';</script>";
+                      
+                      
+                }else{
+                    
+                    
+                    echo "<script type='text/javascript'>test1()</script>";
+                }
+               
+            } catch(PDOException $e){
+           
+           echo "<p style='color:red;font-size:12px;'>Can not connect the server</p>";
+       }
+        }
+       
+   }
+    
